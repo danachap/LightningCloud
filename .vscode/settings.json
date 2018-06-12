@@ -1,3 +1,30 @@
 {
-    "C_Cpp.dimInactiveRegions": false
+    "C_Cpp.dimInactiveRegions": false,
+    "files.associations": {
+        "__locale": "cpp",
+        "__tuple": "cpp",
+        "array": "cpp",
+        "functional": "cpp",
+        "bitset": "cpp",
+        "iterator": "cpp",
+        "list": "cpp",
+        "memory": "cpp",
+        "random": "cpp",
+        "__hash_table": "cpp",
+        "__split_buffer": "cpp",
+        "__tree": "cpp",
+        "atomic": "cpp",
+        "deque": "cpp",
+        "hash_map": "cpp",
+        "hash_set": "cpp",
+        "ios": "cpp",
+        "map": "cpp",
+        "set": "cpp",
+        "string": "cpp",
+        "system_error": "cpp",
+        "vector": "cpp",
+        "*.tcc": "cpp",
+        "rope": "cpp",
+        "slist": "cpp"
+    }
 }

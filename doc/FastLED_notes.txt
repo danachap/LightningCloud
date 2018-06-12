@@ -1,0 +1,19 @@
+Functions:
+
+FastLED:
+    .addLeds()
+    .setBrightness()
+
+
+
+
+
+
+
+Color Utility Functions:
+
+CRGBPalette256
+    .fill_gradient()
+    .fill_rainbow()
+    .fill_solid()
+
