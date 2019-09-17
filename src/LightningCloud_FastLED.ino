@@ -6,7 +6,7 @@ FASTLED_USING_NAMESPACE
 
 // things i want to do
 // have a bunch of different lightning patterns that i can cycle throught with the SimplePatternList object below
-// patterns should
+// patterns should:
 // 	vary brightness
 //	vary number of flashes
 // 	how flashes travel through cloud (random?  nearest neighbors favored?)
@@ -22,13 +22,17 @@ FASTLED_USING_NAMESPACE
 #warning "Requires FastLED 3.1 or later; check github for latest code."
 #endif
 
-#define DATA_PIN 6
+// Neopixel stuff
+#define NEOPIXEL_DATA_PIN 6
 //#define CLK_PIN   4
 #define LED_TYPE WS2811
 #define COLOR_ORDER GRB
 #define NUM_LEDS 60
 #define BRIGHTNESS 100
 #define FRAMES_PER_SECOND 100
+
+// sfx setup
+#define SFX_PIN 4
 
 // temporary variables for use during prototyping
 #define CLOUD_LED_START 38 // start number of pixels inside polyfill. use this when strip only partially inside polyfill during prototyping
@@ -40,15 +44,19 @@ void setup()
 	delay(1500); // sanity delay
 	Serial.begin(9600);
 
+	// neopixel setup
 	// tell FastLED about the LED strip configuration
-	FastLED.addLeds<LED_TYPE, DATA_PIN, COLOR_ORDER>(leds, NUM_LEDS).setCorrection(TypicalLEDStrip);
-	//FastLED.addLeds<LED_TYPE,DATA_PIN,CLK_PIN,COLOR_ORDER>(leds, NUM_LEDS).setCorrection(TypicalLEDStrip);
+	FastLED.addLeds<LED_TYPE, NEOPIXEL_DATA_PIN, COLOR_ORDER>(leds, NUM_LEDS).setCorrection(TypicalLEDStrip);
+	//FastLED.addLeds<LED_TYPE,NEOPIXEL_DATA_PIN,CLK_PIN,COLOR_ORDER>(leds, NUM_LEDS).setCorrection(TypicalLEDStrip);
 
 	// set master brightness control
 	FastLED.setBrightness(BRIGHTNESS);
 
 	// set max volts and milliamps that project can draw (this fixes flickering strip issue i've seen when all LEDs are being lit at high brightness)
 	set_max_power_in_volts_and_milliamps(5, 500);
+
+	// adafruit soundboard fx setup
+	setupSoundFx(SFX_PIN);
 }
 
 // List of storm effects to cycle through.  Each is defined as a separate function below.
@@ -125,10 +133,33 @@ void rollingFlashes()
 		delay(random8(10, 50));
 	}
 
+	// activate sound
+	activateSound(SFX_PIN);
+
 	FastLED.clear(true); // clear the entire strip
 
 	// now wait for next set of bolts
-	delay(random16(4000, 12000));
+	delay(random16(8000, 12000));
+}
+
+void setupSoundFx(int sfx_pin)
+{
+	pinMode(sfx_pin, OUTPUT);
+	digitalWrite(sfx_pin, HIGH); // Set the pin high as the default state, then connect to ground to trigger sound
+}
+
+void activateSound(int sfx_pin)
+{
+	Serial.println("begin: activating sound");
+	digitalWrite(sfx_pin, LOW); // bring the pin low to begin the activation
+	/*
+  According to the documentation, the Audio FX board needs 50ms to trigger. However,
+  I've found that coming from my 3.3v Arduino Pro, it needs 100ms to get the trigger
+  the going
+  */
+	delay(200);					 // hold the pin low long enough to trigger the board; may need to be longer for consistent triggering
+	digitalWrite(sfx_pin, HIGH); // bring the pin high again to end the activation
+	Serial.println("end: activating sound");
 }
 
 void addCloudArcing(fract8 chanceOfGlitter, CRGB arcColor)

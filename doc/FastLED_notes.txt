@@ -3,9 +3,12 @@ Functions:
 FastLED:
     .addLeds()
     .setBrightness()
+    .showColor() - set entire strip to a single color
+    .clear(bool) - clear the strip
 
 
-
+CRGB 
+    .fadeToBlackBy()
 
 
 
