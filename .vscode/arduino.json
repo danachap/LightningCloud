@@ -1,6 +1,0 @@
-{
-    "board": "arduino:avr:uno",
-    "port": "/dev/cu.usbmodemFD1321",
-    "sketch": "src/LightningCloud_FastLED.ino",
-    "output": "./build_output"
-}

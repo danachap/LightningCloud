@@ -1,28 +1,57 @@
 {
     "configurations": [
         {
+            "name": "!!! WARNING !!! AUTO-GENERATED FILE, PLEASE DO NOT MODIFY IT AND USE https://docs.platformio.org/page/projectconf/section_env_build.html#build-flags"
+        },
+        {
             "name": "Mac",
+            "macFrameworkPath": [],
             "includePath": [
-                "/Users/danachap/Desktop/Arduino/Sketchbook/libraries/Adafruit_NeoPixel",
-                "/Users/danachap/Desktop/Arduino/Sketchbook/libraries/FastLED",
-                "/Users/danachap/Library/Arduino15/packages/arduino/hardware/avr/1.6.21/cores/arduino"
+                "/Users/danachap/Documents/PlatformIO/Projects/LightningCloud/include",
+                "/Users/danachap/Documents/PlatformIO/Projects/LightningCloud/src",
+                "/Users/danachap/.platformio/lib/FastLED_ID126",
+                "/Users/danachap/.platformio/packages/framework-arduino-avr/libraries/SoftwareSerial/src",
+                "/Users/danachap/.platformio/packages/framework-arduino-avr/libraries/SPI/src",
+                "/Users/danachap/.platformio/packages/framework-arduino-avr/cores/arduino",
+                "/Users/danachap/.platformio/packages/framework-arduino-avr/variants/standard",
+                "/Users/danachap/.platformio/lib/Adafruit NeoPixel_ID28",
+                "/Users/danachap/.platformio/packages/framework-arduino-avr/libraries/EEPROM/src",
+                "/Users/danachap/.platformio/packages/framework-arduino-avr/libraries/HID/src",
+                "/Users/danachap/.platformio/packages/framework-arduino-avr/libraries/Wire/src",
+                "/Users/danachap/.platformio/packages/tool-unity",
+                ""
             ],
             "browse": {
-                "limitSymbolsToIncludedHeaders": false,
+                "limitSymbolsToIncludedHeaders": true,
                 "path": [
-                    "/Users/danachap/Desktop/Arduino/Sketchbook/libraries/Adafruit_NeoPixel",
-                    "/Users/danachap/Desktop/Arduino/Sketchbook/libraries/FastLED",
-                    "/Users/danachap/Library/Arduino15/packages/arduino/hardware/avr/1.6.21/cores/arduino"
+                    "/Users/danachap/Documents/PlatformIO/Projects/LightningCloud/include",
+                    "/Users/danachap/Documents/PlatformIO/Projects/LightningCloud/src",
+                    "/Users/danachap/.platformio/lib/FastLED_ID126",
+                    "/Users/danachap/.platformio/packages/framework-arduino-avr/libraries/SoftwareSerial/src",
+                    "/Users/danachap/.platformio/packages/framework-arduino-avr/libraries/SPI/src",
+                    "/Users/danachap/.platformio/packages/framework-arduino-avr/cores/arduino",
+                    "/Users/danachap/.platformio/packages/framework-arduino-avr/variants/standard",
+                    "/Users/danachap/.platformio/lib/Adafruit NeoPixel_ID28",
+                    "/Users/danachap/.platformio/packages/framework-arduino-avr/libraries/EEPROM/src",
+                    "/Users/danachap/.platformio/packages/framework-arduino-avr/libraries/HID/src",
+                    "/Users/danachap/.platformio/packages/framework-arduino-avr/libraries/Wire/src",
+                    "/Users/danachap/.platformio/packages/tool-unity",
+                    ""
                 ]
             },
-            "macFrameworkPath": [
-                "/System/Library/Frameworks",
-                "/Library/Frameworks"
+            "defines": [
+                "PLATFORMIO=40100",
+                "ARDUINO_AVR_UNO",
+                "F_CPU=16000000L",
+                "ARDUINO_ARCH_AVR",
+                "ARDUINO=10808",
+                "__AVR_ATmega328P__",
+                ""
             ],
             "intelliSenseMode": "clang-x64",
-            "compilerPath": "/usr/bin/clang",
             "cStandard": "c11",
-            "cppStandard": "c++17"
+            "cppStandard": "c++11",
+            "compilerPath": "\"/Users/danachap/.platformio/packages/toolchain-atmelavr/bin/avr-gcc\" -mmcu=atmega328p"
         }
     ],
     "version": 4
