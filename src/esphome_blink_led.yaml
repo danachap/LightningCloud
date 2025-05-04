@@ -1,0 +1,71 @@
+######################################
+#  ESP8266-specific code goes below  #
+######################################
+
+esphome:
+  name: cloudlamp
+  friendly_name: CloudLamp
+
+esp8266:
+  board: d1_mini
+
+# Enable logging
+logger:
+  level: DEBUG
+
+# Enable Home Assistant API
+api:
+  id: led_cloud_light_api
+  encryption:
+    key: "bqM+ZEEkq5Xog8wntw7X8wtuL4pzW2pgmLzY0TASqAI="
+    # key: "kvhA+LGUcv3N+bAjSZAa0l5QV8j5b2125Ch8cA2mdbk="
+
+# Enable OTA updates
+ota:
+  platform: esphome
+  password: "90d778959f1e15f2c99a8ce7d4603bcc"
+
+# Wi-Fi configuration
+wifi:
+  ssid: !secret wifi_2.4GHz_ssid
+  password: !secret wifi_2.4GHz_password
+
+  # Enable fallback hotspot (captive portal) in case Wi-Fi connection fails
+  ap:
+    ssid: "CloudLamp"
+    password: "FallbackPassword"
+
+  manual_ip:
+    static_ip: 192.168.1.105
+    gateway: 192.168.1.1
+    subnet: 255.255.255.0
+
+captive_portal:
+
+# Define the built-in LED as an output
+output:
+  - platform: gpio
+    pin: GPIO2
+    inverted: True
+    id: builtin_led
+
+# Use the interval component to blink the LED
+interval:
+  - interval: 1000ms
+    then:
+      - if:
+          condition:
+            lambda: "return id(led_state);"
+          then:
+            - output.turn_off: builtin_led
+            - lambda: "id(led_state) = false;"
+          else:
+            - output.turn_on: builtin_led
+            - lambda: "id(led_state) = true;"
+
+# Define a global variable to track the LED state
+globals:
+  - id: led_state
+    type: bool
+    restore_value: no
+    initial_value: "false"

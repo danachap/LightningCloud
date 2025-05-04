@@ -1,0 +1,41 @@
+######################################
+#  ESP8266-specific code goes below  #
+######################################
+
+esphome:
+  name: cloud_lamp
+  friendly_name: CloudLamp
+
+esp8266:
+  board: d1_mini
+
+# Enable logging
+logger:
+  level: DEBUG
+  hardware_uart: UART0_SWAP
+
+# Enable Home Assistant API
+api:
+  id: led_cloud_light_api
+  encryption:
+    key: "bqM+ZEEkq5Xog8wntw7X8wtuL4pzW2pgmLzY0TASqAI="
+
+ota:
+  platform: esphome
+  password: "90d778959f1e15f2c99a8ce7d4603bcc"
+
+# Wi-Fi configuration
+wifi:
+  ssid: !secret wifi_2.4GHz_ssid
+  password: !secret wifi_2.4GHz_password
+
+  # Enable fallback hotspot (captive portal) in case Wi-Fi connection fails
+  ap:
+    ssid: "Cloudlamp"
+    password: "RhPPVXmc0nXl"
+
+  # Optional manual IP
+  manual_ip:
+    static_ip: 192.168.1.77
+    gateway: 192.168.1.1
+    subnet: 255.255.255.0
