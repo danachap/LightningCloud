@@ -1,0 +1,4 @@
+
+ESPHOME:
+
+Encryption Key:  e9w+WyS++QupnvFoNvTTMJahmdA41S5biPCJ0janRw4=
