@@ -3,7 +3,7 @@
 ######################################
 
 esphome:
-  name: cloud_lamp
+  name: cloudlamp
   friendly_name: CloudLamp
 
 esp8266:
@@ -12,7 +12,7 @@ esp8266:
 # Enable logging
 logger:
   level: DEBUG
-  hardware_uart: UART0_SWAP
+  # hardware_uart: UART0_SWAP
 
 # Enable Home Assistant API
 api:
@@ -20,6 +20,7 @@ api:
   encryption:
     key: "bqM+ZEEkq5Xog8wntw7X8wtuL4pzW2pgmLzY0TASqAI="
 
+# Enable OTA updates
 ota:
   platform: esphome
   password: "90d778959f1e15f2c99a8ce7d4603bcc"
@@ -31,11 +32,13 @@ wifi:
 
   # Enable fallback hotspot (captive portal) in case Wi-Fi connection fails
   ap:
-    ssid: "Cloudlamp"
-    password: "RhPPVXmc0nXl"
+    ssid: "CloudLamp"
+    password: "FallbackPassword"
 
   # Optional manual IP
   manual_ip:
-    static_ip: 192.168.1.77
+    static_ip: 192.168.1.102
     gateway: 192.168.1.1
     subnet: 255.255.255.0
+
+captive_portal:
