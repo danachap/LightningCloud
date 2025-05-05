@@ -18,7 +18,7 @@ logger:
 api:
   id: led_cloud_light_api
   encryption:
-    key: "bqM+ZEEkq5Xog8wntw7X8wtuL4pzW2pgmLzY0TASqAI="
+    key: "h1w6XbDP4sm5907cy9L15oce47fgd7k6OULzC/9mS0M="
 
 # Enable OTA updates
 ota:
